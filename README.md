@@ -21,3 +21,5 @@
 * CSS
 * JavaScript
 * БЭМ
+
+[Ссылка на проект](https://terekhovav1987.github.io/mesto/)
