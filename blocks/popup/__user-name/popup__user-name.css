@@ -1,0 +1,16 @@
+.popup__user-name {
+    width: 358px;
+    opacity: 0.2;
+    border: none;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media (max-width: 580px) {
+    .popup__user-name {
+        width: 238px;
+    }
+}
