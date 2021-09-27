@@ -22,20 +22,15 @@ const popupSave = modalWindow.querySelector('.popup__save');
 
 function submitContent(evt) {
     evt.preventDefault();
-
     const nameInput = userName.value;
     const profileInput = userProfile.value;
-
     putName.textContent = nameInput;
     putProfile.textContent = profileInput;
-    toggleModalWindow();
 }
 
 popupSave.addEventListener('click', submitContent);
 
-editButton.addEventListener('click', function() {
-    toggleModalWindow();
-    reloadContent();
-}); 
+editButton.addEventListener('click', toggleModalWindow);
+editButton.addEventListener('click', reloadContent);
 
 modalWindowCloseButton.addEventListener('click', toggleModalWindow);
