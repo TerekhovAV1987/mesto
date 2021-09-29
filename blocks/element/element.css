@@ -3,14 +3,8 @@
     display: grid;
     border-radius: 10px;
     max-width: 282px;
-    min-height: 362px;
     position: relative;
     overflow: hidden;
 
 }
 
-@media (max-width: 580px) {
-    .element {
-        min-height: 361px;
-    }
-}

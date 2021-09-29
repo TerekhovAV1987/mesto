@@ -5,9 +5,10 @@
     background-position: 50%;
     background-repeat:no-repeat;
     border: 2px solid white;
-    height: 50px;
     outline: none;
     padding: 0;
+    padding-bottom: 25px;
+    padding-top: 25px;
     border-radius: 2px;
     box-sizing: border-box;
     cursor: pointer;
