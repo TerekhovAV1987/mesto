@@ -8,11 +8,15 @@
     margin-right: 0;
     margin-bottom: 0;
     color: white;
-    max-width: 294px;
+    width: 294px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media (max-width: 580px) {
     .profile__title {
+        width: 189px;
         font-size: 27px;
         line-height: 33px;
         text-align: center;

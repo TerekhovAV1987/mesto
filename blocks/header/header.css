@@ -9,8 +9,18 @@
     border-bottom: 1px solid rgba(84,84,84,.7);
 }
 
+
+@media (max-width: 918px) {
+    .header {
+        margin-left: 19px;
+        margin-right: 19px;
+    }
+
+}
+
 @media (max-width: 580px) {
     .header {
         margin-top: 28px;
     }
 }
+

@@ -9,6 +9,10 @@
     margin-right: 0;
     margin-bottom: 0;
     grid-column-start: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 336px;
 }
 
 @media (max-width: 580px) {
@@ -16,5 +20,6 @@
         font-size: 14px;
         line-height: 17px;
         text-align: center;
+        width: 282px;
     }
 }

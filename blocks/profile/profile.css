@@ -8,14 +8,14 @@
     position: relative;
 }
 
-@media (max-width: 885px) {
+@media (max-width: 918px) {
     .profile{
         margin-left: 19px;
         margin-right: 19px;
     }
 }
 
-@media (max-width: 701px) {
+@media (max-width: 768px) {
     .profile {
         flex-wrap: wrap;
     }

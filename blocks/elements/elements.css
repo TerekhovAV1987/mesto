@@ -11,3 +11,11 @@
     justify-items: center;
 
 }
+
+@media (max-width: 918px) {
+    .elements {
+        margin-left: 19px;
+        margin-right: 19px;
+    }
+
+}
