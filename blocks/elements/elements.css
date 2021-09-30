@@ -19,3 +19,11 @@
     }
 
 }
+
+@media (max-width: 500px) {
+    .elements {
+        margin-top: 36px;
+    }
+
+}
+

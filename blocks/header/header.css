@@ -24,3 +24,10 @@
     }
 }
 
+@media (max-width: 400px) {
+    .header {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+

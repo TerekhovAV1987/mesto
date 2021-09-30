@@ -8,7 +8,9 @@
 
 @media (max-width: 701px) {
     .footer {
+        margin-top: 48px;
         margin-left: 19px;
         margin-right: 19px;
+        margin-bottom: 36px;
     }
 }
