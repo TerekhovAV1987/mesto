@@ -25,6 +25,12 @@
         line-height: 33px;
         text-align: center;
         justify-self: end;
+        width: 282px;
+    }
+}
+
+@media (max-width: 400px) {
+    .profile__title {
         width: 189px;
     }
 }
