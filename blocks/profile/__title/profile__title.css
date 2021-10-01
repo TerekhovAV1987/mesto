@@ -16,6 +16,7 @@
     grid-column-end: auto;
     grid-row-start: 1;
     grid-row-end: auto;
+    width: 294px;
 }
 
 @media (max-width: 580px) {
