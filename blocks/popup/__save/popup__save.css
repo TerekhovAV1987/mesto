@@ -18,7 +18,6 @@
 
 .popup__save:hover {
     opacity: 0.8;
-    border-radius: 2px;
 }
 
 @media (max-width: 580px) {

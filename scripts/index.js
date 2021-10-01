@@ -9,8 +9,8 @@ const editButton = profile.querySelector('.profile__edit-button');
 //Находим форму в popup
 const popupForm = modalWindow.querySelector('.popup__content');
 //Находим поля формы
-const userName = popupForm.querySelector('.popup__user_name');
-const userProfile = popupForm.querySelector('.popup__user_profile');
+const userName = popupForm.querySelector('.popup__user_type_name');
+const userProfile = popupForm.querySelector('.popup__user_type_profile');
 
 
 //Выбираем элементы, куда добавятся значения полей
