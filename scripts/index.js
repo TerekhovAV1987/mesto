@@ -12,6 +12,47 @@ const popupForm = modalWindow.querySelector('.popup__content');
 const userName = popupForm.querySelector('.popup__user_type_name');
 const userProfile = popupForm.querySelector('.popup__user_type_profile');
 
+//Массив карточек, которые должны отображаться при загрузке страницы
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ]; 
+
+const elementsContainer = document.querySelector('.elements');
+const elementsTemplate = document.querySelector('#elements-template').content;
+
+initialCards.forEach(function(item){
+
+    const elementsItem = elementsTemplate.cloneNode(true);
+
+    elementsItem.querySelector('.element__picture').src = item.link;
+    elementsItem.querySelector('.element__picture').alt = item.name;
+    elementsItem.querySelector('.element__title').textContent = item.name;
+
+    elementsContainer.append(elementsItem)
+});
 
 //Выбираем элементы, куда добавятся значения полей
 const putName = profile.querySelector('.profile__title');
