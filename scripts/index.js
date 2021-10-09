@@ -67,7 +67,7 @@ initialCards.forEach(function(item){
     elementsItem.querySelector('.element__picture').src = item.link;
     elementsItem.querySelector('.element__picture').alt = item.name;
     elementsItem.querySelector('.element__title').textContent = item.name;
-
+    //Активируем кнопку like
     elementsItem.querySelector('.element__like').addEventListener('click', function (evt) {
       evt.target.classList.toggle('element__like_active');
     });
@@ -127,7 +127,7 @@ function addPlace(placeNameValue, placeLinkValue) {
 
   placeItem.querySelector('.element__picture').src = placeLinkValue;
   placeItem.querySelector('.element__title').textContent = placeNameValue;
-
+  //Активируем кнопку like
   placeItem.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
