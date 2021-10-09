@@ -68,6 +68,10 @@ initialCards.forEach(function(item){
     elementsItem.querySelector('.element__picture').alt = item.name;
     elementsItem.querySelector('.element__title').textContent = item.name;
 
+    elementsItem.querySelector('.element__like').addEventListener('click', function (evt) {
+      evt.target.classList.toggle('element__like_active');
+    });
+
     elementsContainer.append(elementsItem)
 });
 
@@ -123,6 +127,10 @@ function addPlace(placeNameValue, placeLinkValue) {
 
   placeItem.querySelector('.element__picture').src = placeLinkValue;
   placeItem.querySelector('.element__title').textContent = placeNameValue;
+
+  placeItem.querySelector('.element__like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('element__like_active');
+  });
 
   placeContainer.prepend(placeItem); //prepend впереди всех, append после всех 
 }
