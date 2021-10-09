@@ -35,3 +35,4 @@
 @import url('../blocks/popup__new-place/__place-title/popup__place-title.css');
 @import url('../blocks/popup__new-place/__place/popup__place.css');
 @import url('../blocks/popup__new-place/_is-opened-place/popup_is-opened-place.css');
+@import url('../blocks/popup__new-place/__new-place-close/popup__new-place-close.css');

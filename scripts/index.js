@@ -15,6 +15,11 @@ const userProfile = popupForm.querySelector('.popup__user_type_profile');
 //Находим кнопку добавления нового места
 const addButton = profile.querySelector('.profile__add-button');
 
+//Находим popup__new-place
+const popupPlace = document.querySelector('.popup__new-place');
+//Находи кнопку закрытия для popup__new-place
+const popupPlaceClose = popupPlace.querySelector('.popup__new-place-close');
+
 
 
 
@@ -69,6 +74,15 @@ initialCards.forEach(function(item){
 const putName = profile.querySelector('.profile__title');
 const putProfile = profile.querySelector('.profile__subtitle');
 
+//Для отображения popup__new-place
+function popupPlaceOpened() {
+  popupPlace.classList.add('popup_is-opened-place');
+};
+//Для скрытия popup__new-place
+function popupPlaceClosed() {
+  popupPlace.classList.remove('popup_is-opened-place');
+};
+
 //Для отображения popup
 function modalWindowOpened() {
     modalWindow.classList.add('popup_is-opened');
@@ -103,5 +117,8 @@ popupForm.addEventListener('submit', submitContent);
 
 editButton.addEventListener('click', reloadContent);
 
+addButton.addEventListener('click', popupPlaceOpened);
+
 //Для закрытия popup по кнопке "Закрыть"
 modalWindowCloseButton.addEventListener('click', modalWindowClosed);
+popupPlaceClose.addEventListener('click', popupPlaceClosed);
