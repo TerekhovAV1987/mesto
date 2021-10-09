@@ -12,20 +12,21 @@ const popupForm = modalWindow.querySelector('.popup__content');
 const userName = popupForm.querySelector('.popup__user_type_name');
 const userProfile = popupForm.querySelector('.popup__user_type_profile');
 
+
+
 //Находим кнопку добавления нового места
 const addButton = profile.querySelector('.profile__add-button');
-
 //Находим popup__new-place
 const popupPlace = document.querySelector('.popup__new-place');
 //Находи кнопку закрытия для popup__new-place
 const popupPlaceClose = popupPlace.querySelector('.popup__new-place-close');
-
-
-
-
-
-
-
+//Находим форму в popupPlace
+const popupPlaceForm = popupPlace.querySelector('.popup__place-content');
+//Находим поля формы
+const placeName = popupPlaceForm.querySelector('.popup__place_type_name');
+const placeLink = popupPlaceForm.querySelector('.popup__place_type_link');
+//Находим кнопку создать новую карточку
+const createButton = popupPlaceForm.querySelector('.popup__create');
 
 
 //Массив карточек, которые должны отображаться при загрузке страницы
@@ -54,7 +55,7 @@ const initialCards = [
       name: 'Байкал',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
-  ]; 
+]; 
 
 const elementsContainer = document.querySelector('.elements');
 const elementsTemplate = document.querySelector('#elements-template').content;
@@ -111,6 +112,34 @@ function submitContent(evt) {
     //Добавляем закрытие после отправки
     modalWindowClosed()
 };
+
+//Для создания новой карточки
+
+function addPlace(placeNameValue, placeLinkValue) {
+
+  const placeContainer = document.querySelector('.elements');
+  const placeTemplate = document.querySelector('#elements-template').content;
+  const placeItem = placeTemplate.cloneNode(true);
+
+  placeItem.querySelector('.element__picture').src = placeLinkValue;
+  placeItem.querySelector('.element__title').textContent = placeNameValue;
+
+  placeContainer.prepend(placeItem); //prepend впереди всех, append после всех 
+}
+
+createButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  const place = document.querySelector('.popup__place_type_name');
+  const link = document.querySelector('.popup__place_type_link');
+
+  addPlace(place.value, link.value);
+  popupPlaceClosed();
+
+  place.value = '';
+  link.value = '';
+});
+
+
 
 //Следим за событием 'submit'
 popupForm.addEventListener('submit', submitContent);

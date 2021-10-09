@@ -5,7 +5,7 @@
     max-width: 880px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
-    /* grid-template-rows: max-content; */
+    grid-template-rows: max-content;
     grid-row-gap: 20px;
     grid-column-gap: 17px;
     justify-items: center;
