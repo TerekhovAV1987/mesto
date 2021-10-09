@@ -1,0 +1,30 @@
+.popup__create {
+    width: 358px;
+    border: none;
+    background: #000000;
+    border-radius: 2px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    cursor: pointer;
+    color: #FFFFFF;
+    padding: 0;
+    padding-top: 14px;
+    padding-bottom: 18px;
+    margin-top: 48px;
+}
+
+.popup__create:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 580px) {
+    .popup__create {
+        width: 238px;
+        font-size: 14px;
+        line-height: 17px;
+        padding-bottom: 14px;
+    }
+}

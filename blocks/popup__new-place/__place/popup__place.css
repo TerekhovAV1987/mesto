@@ -1,0 +1,26 @@
+.popup__place {
+    width: 358px;
+    border: none;
+    border-bottom: 1px solid;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.popup__place:last-of-type {
+    margin-bottom: 0;
+}
+
+
+@media (max-width: 580px) {
+    .popup__place {
+        width: 238px;
+    }
+}

@@ -12,6 +12,17 @@ const popupForm = modalWindow.querySelector('.popup__content');
 const userName = popupForm.querySelector('.popup__user_type_name');
 const userProfile = popupForm.querySelector('.popup__user_type_profile');
 
+//Находим кнопку добавления нового места
+const addButton = profile.querySelector('.profile__add-button');
+
+
+
+
+
+
+
+
+
 //Массив карточек, которые должны отображаться при загрузке страницы
 const initialCards = [
     {
