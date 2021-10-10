@@ -72,6 +72,11 @@ initialCards.forEach(function(item){
       evt.target.classList.toggle('element__like_active');
     });
 
+    //Удаляем карточки по умолчанию
+    elementsItem.querySelector('.element__delete').addEventListener('click', function (event){
+      event.target.closest('.element').remove();
+    });
+
     elementsContainer.append(elementsItem)
 });
 
@@ -130,6 +135,11 @@ function addPlace(placeNameValue, placeLinkValue) {
   //Активируем кнопку like
   placeItem.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
+  });
+
+  //Удаляем карточки которые были добавлены на страницу
+  placeItem.querySelector('.element__delete').addEventListener('click', function (event){
+     event.target.closest('.element').remove();
   });
 
   placeContainer.prepend(placeItem); //prepend впереди всех, append после всех 
