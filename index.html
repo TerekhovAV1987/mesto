@@ -26,30 +26,39 @@
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
         </footer>
-        <div class="popup">
+
+        <div class="popup popup_item_create-profile">
             <div class="popup__container">
-                <form class="popup__content" name="popup-form">
-                    <h3 class="popup__title">Редактировать профиль</h3>
-                    <input type="text" name="userName" class="popup__user popup__user_type_name">
-                    <input type="text" name="userProfile" class="popup__user popup__user_type_profile">
-                    <button type="submit" class="popup__save">Сохранить</button>
+                <form class="popup-content popup-content__item_profile" name="popupProfile">
+                    <h3 class="popup-content__title">Редактировать профиль</h3>
+                    <input type="text" name="userName" class="popup-content__form popup-content__form_type_name">
+                    <input type="text" name="userProfile" class="popup-content__form popup-content__form_type_profile">
+                    <button type="submit" class="popup-content__save">Сохранить</button>
                 </form>
-                <button class="popup__close" type="button"></button>
+                <button class="popup__close popup__close_button_profile" type="button"></button>
             </div>
         </div>
         
-        <div class="popup__new-place">
-            <div class="popup__place-container">
-                <form class="popup__place-content" name="popup-place-form">
-                    <h3 class="popup__place-title">Новое место</h3>
-                    <input type="text" name="placeName" class="popup__place popup__place_type_name">
-                    <input type="text" name="placeLink" class="popup__place popup__place_type_link">
-                    <button type="submit" class="popup__create">Создать</button>
+        <div class="popup popup_item_create-place">
+            <div class="popup__container">
+                <form class="popup-content popup-content__item_place" name="popupPlace">
+                    <h3 class="popup-content__title">Новое место</h3>
+                    <input type="text" name="placeName" class="popup-content__form popup-content__form_place_name">
+                    <input type="text" name="placeLink" class="popup-content__form popup-content__form_place_link">
+                    <button type="submit" class="popup-content__save">Создать</button>
                 </form>
-                <button class="popup__new-place-close" type="button"></button>
+                <button class="popup__close popup__close_button_place" type="button"></button>
             </div>
         </div>
 
+        <div class="popup popup_item_create-image">
+            <div class="popup__container-image">
+                <button type="button" class="popup__close popup__close_button_image"></button>
+                <img src="#" alt="" class="popup__preview-image">
+                <p class="popup__caption-image"></p>
+            </div>
+        </div>
+        
     </div>
 
     <template id="elements-template">

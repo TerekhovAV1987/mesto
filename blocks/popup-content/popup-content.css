@@ -1,4 +1,4 @@
-.popup__place-content {
+.popup-content {
     display: flex;
     flex-direction: column;
     background-color: white;

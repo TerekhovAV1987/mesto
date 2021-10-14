@@ -1,4 +1,4 @@
-.popup__place-title {
+.popup-content__title {
     font-weight: 900;
     font-size: 24px;
     line-height: 29px;
@@ -7,7 +7,7 @@
 }
 
 @media (max-width: 580px) {
-    .popup__place-title {
+    .popup-content__title {
         font-style: normal;
         font-size: 18px;
         line-height: 22px;

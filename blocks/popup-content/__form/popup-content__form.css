@@ -1,4 +1,4 @@
-.popup__user {
+.popup-content__form {
     width: 358px;
     border: none;
     border-bottom: 1px solid;
@@ -14,13 +14,13 @@
     line-height: 17px;
 }
 
-.popup__user:last-of-type {
+.popup-content__form:last-of-type {
     margin-bottom: 0;
 }
 
 
 @media (max-width: 580px) {
-    .popup__user {
+    .popup-content__form {
         width: 238px;
     }
 }

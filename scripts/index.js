@@ -1,32 +1,40 @@
-//Находим popup
-const modalWindow = document.querySelector('.popup');
-//В popup находим кнопку закрытия
-const modalWindowCloseButton = modalWindow.querySelector('.popup__close');
+//Находим popup profile
+const popupProfile = document.querySelector('.popup_item_create-profile');
+//Находим popup plcae
+const popupPlace = document.querySelector('.popup_item_create-place');
+//Находим popup image
+const popupImage = document.querySelector('.popup_item_create-image');
+//находим кнопку закрытия popupProfile
+const popupCloseProfile = document.querySelector('.popup__close_button_profile');
+//находим кнопку закрытия popupImage
+const popupCloseImage = document.querySelector('.popup__close_button_image');
+//находим кнопку закрытия popupPlace
+const popupClosePlace = document.querySelector('.popup__close_button_place');
 //Находим секцию profile
 const profile = document.querySelector('.profile');
 //Находим в profile кнопку редактирования
 const editButton = profile.querySelector('.profile__edit-button');
-//Находим форму в popup
-const popupForm = modalWindow.querySelector('.popup__content');
-//Находим поля формы
-const userName = popupForm.querySelector('.popup__user_type_name');
-const userProfile = popupForm.querySelector('.popup__user_type_profile');
-
-
-
-//Находим кнопку добавления нового места
+//Находим Имя profile куда добавятся значения полей
+const profileTitle = profile.querySelector('.profile__title');
+//Находим Профиль profile куда добавятся значения полей
+const profileSubtitle = profile.querySelector('.profile__subtitle');
+//Находим кнопку добавления в profile
 const addButton = profile.querySelector('.profile__add-button');
-//Находим popup__new-place
-const popupPlace = document.querySelector('.popup__new-place');
-//Находи кнопку закрытия для popup__new-place
-const popupPlaceClose = popupPlace.querySelector('.popup__new-place-close');
-//Находим форму в popupPlace
-const popupPlaceForm = popupPlace.querySelector('.popup__place-content');
-//Находим поля формы
-const placeName = popupPlaceForm.querySelector('.popup__place_type_name');
-const placeLink = popupPlaceForm.querySelector('.popup__place_type_link');
-//Находим кнопку создать новую карточку
-const createButton = popupPlaceForm.querySelector('.popup__create');
+//Находим форму редактирования профиля 
+const editProfile = popupProfile.querySelector('.popup-content__item_profile');
+//Находим форму добавления карточки
+const addPlace = popupPlace.querySelector('.popup-content__item_place');
+//Находим поля формы редактирования профиля
+const userName = popupProfile.querySelector('.popup-content__form_type_name');
+const userProfile = popupProfile.querySelector('.popup-content__form_type_profile');
+//Находим поля формы добавления карточки
+const placeName = popupPlace.querySelector('.popup-content__form_place_name');
+const placeLink = popupPlace.querySelector('.popup-content__form_place_link');
+//Находим кнопку сохранить popupPlace
+const saveButton = popupPlace.querySelector('.popup-content__save');
+
+const popupImagePreview = document.querySelector('.popup__preview-image');
+const popupCaption = document.querySelector('.popup__caption-image');
 
 
 //Массив карточек, которые должны отображаться при загрузке страницы
@@ -57,12 +65,27 @@ const initialCards = [
     }
 ]; 
 
+
+
+//Для отображения popup. Чтобы не создавать на каждый попап функцию открытия, использую popupName для функции
+function popupOpened(popupName) {
+  popupName.classList.add('popup_is-opened');
+};
+//Для скрытия popup
+function popupClosed(popupName) {
+  popupName.classList.remove('popup_is-opened');
+};
+
+
+
 const elementsContainer = document.querySelector('.elements');
 const elementsTemplate = document.querySelector('#elements-template').content;
 
 initialCards.forEach(function(item){
-
+  //находим изображение для попапа и увеличенной картинки
+    
     const elementsItem = elementsTemplate.cloneNode(true);
+    const elementPicture = elementsItem.querySelector('.element__picture');
 
     elementsItem.querySelector('.element__picture').src = item.link;
     elementsItem.querySelector('.element__picture').alt = item.name;
@@ -77,37 +100,24 @@ initialCards.forEach(function(item){
       event.target.closest('.element').remove();
     });
 
+    //Popup увеличенное изображение
+    elementPicture.addEventListener('click', function() {
+      popupImagePreview.src = item.link;
+      popupCaption.textContent = item.name;
+      popupOpened(popupImage);
+    });
+
     elementsContainer.append(elementsItem)
 });
 
-//Выбираем элементы, куда добавятся значения полей
-const putName = profile.querySelector('.profile__title');
-const putProfile = profile.querySelector('.profile__subtitle');
-
-//Для отображения popup__new-place
-function popupPlaceOpened() {
-  popupPlace.classList.add('popup_is-opened-place');
-};
-//Для скрытия popup__new-place
-function popupPlaceClosed() {
-  popupPlace.classList.remove('popup_is-opened-place');
-};
-
-//Для отображения popup
-function modalWindowOpened() {
-    modalWindow.classList.add('popup_is-opened');
-};
-//Для скрытия popup
-function modalWindowClosed() {
-    modalWindow.classList.remove('popup_is-opened');
-};
-
 function reloadContent() {
-    userName.value = putName.textContent;
-    userProfile.value = putProfile.textContent;
+    userName.value = profileTitle.textContent;
+    userProfile.value = profileSubtitle.textContent;
     //При открытии popup поля заполняются данными из profile
-    modalWindowOpened()
+    popupOpened(popupProfile);
 };
+
+editButton.addEventListener('click', reloadContent);
 
 //Для отправки формы
 function submitContent(evt) {
@@ -116,19 +126,22 @@ function submitContent(evt) {
     let userNameValue = userName.value;
     let userProfileValue = userProfile.value;
     //Добавляем значения
-    putName.textContent = userNameValue;
-    putProfile.textContent = userProfileValue;
+    profileTitle.textContent = userNameValue;
+    profileSubtitle.textContent = userProfileValue;
     //Добавляем закрытие после отправки
-    modalWindowClosed()
+    popupClosed(popupProfile);
 };
 
 //Для создания новой карточки
 
-function addPlace(placeNameValue, placeLinkValue) {
+addButton.addEventListener('click', () => popupOpened(popupPlace));
+
+function addCard(placeNameValue, placeLinkValue) {
 
   const placeContainer = document.querySelector('.elements');
   const placeTemplate = document.querySelector('#elements-template').content;
   const placeItem = placeTemplate.cloneNode(true);
+  const placePicture = placeItem.querySelector('.element__picture');
 
   placeItem.querySelector('.element__picture').src = placeLinkValue;
   placeItem.querySelector('.element__title').textContent = placeNameValue;
@@ -142,16 +155,22 @@ function addPlace(placeNameValue, placeLinkValue) {
      event.target.closest('.element').remove();
   });
 
+    //Popup увеличенное изображение
+  placePicture.addEventListener('click', function() {
+    popupImagePreview.src = placeLinkValue.link;
+    popupCaption.textContent = placeNameValue.name;
+    popupOpened(popupImage);
+  });
   placeContainer.prepend(placeItem); //prepend впереди всех, append после всех 
-}
+};
 
-createButton.addEventListener('click', function(event) {
+  saveButton.addEventListener('click', function(event) {
   event.preventDefault();
-  const place = document.querySelector('.popup__place_type_name');
-  const link = document.querySelector('.popup__place_type_link');
+  const place = document.querySelector('.popup-content__form_place_name');
+  const link = document.querySelector('.popup-content__form_place_link');
 
-  addPlace(place.value, link.value);
-  popupPlaceClosed();
+  addCard(place.value, link.value);
+  popupClosed(popupPlace);
 
   place.value = '';
   link.value = '';
@@ -160,12 +179,11 @@ createButton.addEventListener('click', function(event) {
 
 
 //Следим за событием 'submit'
-popupForm.addEventListener('submit', submitContent);
+popupProfile.addEventListener('submit', submitContent);
 
-editButton.addEventListener('click', reloadContent);
-
-addButton.addEventListener('click', popupPlaceOpened);
-
-//Для закрытия popup по кнопке "Закрыть"
-modalWindowCloseButton.addEventListener('click', modalWindowClosed);
-popupPlaceClose.addEventListener('click', popupPlaceClosed);
+//Для закрытия popupProfile по кнопке "Закрыть"
+popupCloseProfile.addEventListener('click', () => popupClosed(popupProfile));
+//Для закрытия popupImage по кнопке "Закрыть"
+popupCloseImage.addEventListener('click', () => popupClosed(popupImage));
+//Для закрытия popupPlace по кнопке "Закрыть"
+popupClosePlace.addEventListener('click', () => popupClosed(popupPlace));
