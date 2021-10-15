@@ -183,17 +183,17 @@ addButton.addEventListener('click', () => handleOpenedPopup(popupPlace));
 //   placeContainer.prepend(placeItem); //prepend впереди всех, append после всех 
 // };
 
-//   saveButton.addEventListener('click', function(event) {
-//   event.preventDefault();
-//   // const place = document.querySelector('.popup-content__form_place_name');
-//   // const link = document.querySelector('.popup-content__form_place_link');
+  saveButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  // const place = document.querySelector('.popup-content__form_place_name');
+  // const link = document.querySelector('.popup-content__form_place_link');
 
-//   addCard(placeName.value, placeLink.value);
-//   handleClosedPopup(popupPlace);
+  addCard(placeName.value, placeLink.value);
+  handleClosedPopup(popupPlace);
 
-//   placeName.value = '';
-//   placeLink.value = '';
-// });
+  placeName.value = '';
+  placeLink.value = '';
+});
 
 
 
