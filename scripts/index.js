@@ -157,10 +157,11 @@ function addCard(placeNameValue, placeLinkValue) {
 
     //Popup увеличенное изображение
   placePicture.addEventListener('click', function() {
-    popupImagePreview.src = placeLinkValue.link;
-    popupCaption.textContent = placeNameValue.name;
+    popupImagePreview.src = placeLinkValue;
+    popupCaption.textContent = placeNameValue;
     popupOpened(popupImage);
   });
+  
   placeContainer.prepend(placeItem); //prepend впереди всех, append после всех 
 };
 
