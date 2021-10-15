@@ -110,6 +110,7 @@ initialCards.forEach(function(item){
     elementsContainer.append(elementsItem)
 });
 
+
 function reloadContent() {
     userName.value = profileTitle.textContent;
     userProfile.value = profileSubtitle.textContent;
