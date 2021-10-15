@@ -68,11 +68,11 @@ const initialCards = [
 
 
 //Для отображения popup. Чтобы не создавать на каждый попап функцию открытия, использую popupName для функции
-function popupOpened(popupName) {
+function handleOpenedPopup(popupName) {
   popupName.classList.add('popup_is-opened');
 };
 //Для скрытия popup
-function popupClosed(popupName) {
+function handleClosedPopup(popupName) {
   popupName.classList.remove('popup_is-opened');
 };
 
@@ -104,7 +104,7 @@ initialCards.forEach(function(item){
     elementPicture.addEventListener('click', function() {
       popupImagePreview.src = item.link;
       popupCaption.textContent = item.name;
-      popupOpened(popupImage);
+      handleOpenedPopup(popupImage);
     });
 
     elementsContainer.append(elementsItem)
@@ -114,7 +114,7 @@ function reloadContent() {
     userName.value = profileTitle.textContent;
     userProfile.value = profileSubtitle.textContent;
     //При открытии popup поля заполняются данными из profile
-    popupOpened(popupProfile);
+    handleOpenedPopup(popupProfile);
 };
 
 editButton.addEventListener('click', reloadContent);
@@ -123,18 +123,18 @@ editButton.addEventListener('click', reloadContent);
 function submitContent(evt) {
     evt.preventDefault();
     //Получение полей input из свойства Value
-    let userNameValue = userName.value;
-    let userProfileValue = userProfile.value;
+    const userNameValue = userName.value;
+    const userProfileValue = userProfile.value;
     //Добавляем значения
     profileTitle.textContent = userNameValue;
     profileSubtitle.textContent = userProfileValue;
     //Добавляем закрытие после отправки
-    popupClosed(popupProfile);
+    handleClosedPopup(popupProfile);
 };
 
 //Для создания новой карточки
 
-addButton.addEventListener('click', () => popupOpened(popupPlace));
+addButton.addEventListener('click', () => handleOpenedPopup(popupPlace));
 
 function addCard(placeNameValue, placeLinkValue) {
 
@@ -159,7 +159,7 @@ function addCard(placeNameValue, placeLinkValue) {
   placePicture.addEventListener('click', function() {
     popupImagePreview.src = placeLinkValue;
     popupCaption.textContent = placeNameValue;
-    popupOpened(popupImage);
+    handleOpenedPopup(popupImage);
   });
   
   placeContainer.prepend(placeItem); //prepend впереди всех, append после всех 
@@ -167,14 +167,14 @@ function addCard(placeNameValue, placeLinkValue) {
 
   saveButton.addEventListener('click', function(event) {
   event.preventDefault();
-  const place = document.querySelector('.popup-content__form_place_name');
-  const link = document.querySelector('.popup-content__form_place_link');
+  // const place = document.querySelector('.popup-content__form_place_name');
+  // const link = document.querySelector('.popup-content__form_place_link');
 
-  addCard(place.value, link.value);
-  popupClosed(popupPlace);
+  addCard(placeName.value, placeLink.value);
+  handleClosedPopup(popupPlace);
 
-  place.value = '';
-  link.value = '';
+  placeName.value = '';
+  placeLink.value = '';
 });
 
 
@@ -183,8 +183,8 @@ function addCard(placeNameValue, placeLinkValue) {
 popupProfile.addEventListener('submit', submitContent);
 
 //Для закрытия popupProfile по кнопке "Закрыть"
-popupCloseProfile.addEventListener('click', () => popupClosed(popupProfile));
+popupCloseProfile.addEventListener('click', () => handleClosedPopup(popupProfile));
 //Для закрытия popupImage по кнопке "Закрыть"
-popupCloseImage.addEventListener('click', () => popupClosed(popupImage));
+popupCloseImage.addEventListener('click', () => handleClosedPopup(popupImage));
 //Для закрытия popupPlace по кнопке "Закрыть"
-popupClosePlace.addEventListener('click', () => popupClosed(popupPlace));
+popupClosePlace.addEventListener('click', () => handleClosedPopup(popupPlace));
