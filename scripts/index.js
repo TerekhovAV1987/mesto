@@ -156,8 +156,6 @@ addButton.addEventListener('click', () => handleOpenedPopup(popupPlace));
 
   saveButton.addEventListener('click', function(event) {
   event.preventDefault();
-  // const place = document.querySelector('.popup-content__form_place_name');
-  // const link = document.querySelector('.popup-content__form_place_link');
   const card = {}
   card.link = placeLink.value;
   card.name = placeName.value;
