@@ -28,11 +28,11 @@
         </footer>
 
         <div class="popup popup_item_create-profile">
-            <div class="popup__container">
+            <div class="popup__ container">
                 <form class="popup-content popup-content_item_profile" name="popupProfile">
                     <h3 class="popup-content__title">Редактировать профиль</h3>
-                    <input type="text" name="userName" class="popup-content__form popup-content__form_type_name">
-                    <input type="text" name="userProfile" class="popup-content__form popup-content__form_type_profile">
+                    <input type="text" name="userName" class="popup-content__form popup-content__form_type_name" required>
+                    <input type="text" name="userProfile" class="popup-content__form popup-content__form_type_profile" required>
                     <button type="submit" class="popup-content__save">Сохранить</button>
                 </form>
                 <button class="popup__close popup__close_button_profile" type="button"></button>
@@ -43,8 +43,8 @@
             <div class="popup__container">
                 <form class="popup-content popup-content_item_place" name="popupPlace">
                     <h3 class="popup-content__title">Новое место</h3>
-                    <input type="text" name="placeName" class="popup-content__form popup-content__form_place_name">
-                    <input type="text" name="placeLink" class="popup-content__form popup-content__form_place_link">
+                    <input type="text" name="placeName" class="popup-content__form popup-content__form_place_name" required>
+                    <input type="text" name="placeLink" class="popup-content__form popup-content__form_place_link" required>
                     <button type="submit" class="popup-content__save">Создать</button>
                 </form>
                 <button class="popup__close popup__close_button_place" type="button"></button>

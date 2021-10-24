@@ -18,6 +18,10 @@
     margin-bottom: 0;
 }
 
+.popup-content__form:invalid {
+    border-bottom: 1px solid red;
+}
+
 
 @media (max-width: 580px) {
     .popup-content__form {
