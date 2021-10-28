@@ -75,10 +75,28 @@ const initialCards = [
 //Для отображения popup. Чтобы не создавать на каждый попап функцию открытия, использую popupName для функции
 function handleOpenedPopup(popupName) {
   popupName.classList.add('popup_is-opened');
+  document.addEventListener('keydown', function(evt) {
+    if(evt.key === 'Escape') {
+      handleClosedPopup(popupName);
+    }
+  })
 };
+
 //Для скрытия popup
 function handleClosedPopup(popupName) {
   popupName.classList.remove('popup_is-opened');
+  document.removeEventListener('keydown', function(evt) {
+    if(evt.key === 'Escape') {
+      handleClosedPopup(popupName);
+    }
+  })
+};
+
+//Для закрытия по overlay
+function closeOverlay(evt) {
+  if(evt.target === evt.currentTarget) {
+    handleClosedPopup(evt.target);
+  }
 };
 
 
@@ -177,3 +195,10 @@ popupCloseProfile.addEventListener('click', () => handleClosedPopup(popupProfile
 popupCloseImage.addEventListener('click', () => handleClosedPopup(popupImage));
 //Для закрытия popupPlace по кнопке "Закрыть"
 popupClosePlace.addEventListener('click', () => handleClosedPopup(popupPlace));
+
+//Для закрытия popupProfile по клику на overlay
+popupProfile.addEventListener('click', closeOverlay);
+//Для закрытия popupImage по клику на overlay
+popupImage.addEventListener('click', closeOverlay);
+//Для закрытия popupPlace по клику на overlay
+popupPlace.addEventListener('click', closeOverlay);

@@ -3,7 +3,6 @@
     border: none;
     border-bottom: 1px solid;
     border-bottom-color: rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -16,11 +15,9 @@
 
 .popup-content__form:last-of-type {
     margin-bottom: 0;
+    margin-top: 13px;
 }
 
-.popup-content__form:invalid {
-    border-bottom: 1px solid red;
-}
 
 
 @media (max-width: 580px) {

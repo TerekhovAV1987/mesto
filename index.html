@@ -28,11 +28,13 @@
         </footer>
 
         <div class="popup popup_item_create-profile">
-            <div class="popup__ container">
-                <form class="popup-content popup-content_item_profile" name="popupProfile">
+            <div class="popup__container">
+                <form class="popup-content popup-content_item_profile" name="popupProfile" novalidate>
                     <h3 class="popup-content__title">Редактировать профиль</h3>
-                    <input type="text" name="userName" class="popup-content__form popup-content__form_type_name" required>
-                    <input type="text" name="userProfile" class="popup-content__form popup-content__form_type_profile" required>
+                    <input id="user_Name" type="text" name="userName" class="popup-content__form popup-content__form_type_name" required minlength="2" maxlength="40">
+                    <span class="popup-content__error" id="user_Name-error"></span>
+                    <input id="user_Profile" type="text" name="userProfile" class="popup-content__form popup-content__form_type_profile" required minlength="2" maxlength="200">
+                    <span class="popup-content__error" id="user_Profile-error"></span>
                     <button type="submit" class="popup-content__save">Сохранить</button>
                 </form>
                 <button class="popup__close popup__close_button_profile" type="button"></button>
@@ -41,10 +43,12 @@
         
         <div class="popup popup_item_create-place">
             <div class="popup__container">
-                <form class="popup-content popup-content_item_place" name="popupPlace">
+                <form class="popup-content popup-content_item_place" name="popupPlace" novalidate>
                     <h3 class="popup-content__title">Новое место</h3>
-                    <input type="text" name="placeName" class="popup-content__form popup-content__form_place_name" required>
-                    <input type="text" name="placeLink" class="popup-content__form popup-content__form_place_link" required>
+                    <input id="place_Name" type="text" name="placeName" class="popup-content__form popup-content__form_place_name" placeholder="Название" required minlength="2" maxlength="30">
+                    <span class="popup-content__error" id="place_Name-error"></span>
+                    <input id="place_Link" type="url" name="placeLink" class="popup-content__form popup-content__form_place_link" placeholder="Ссылка на картинку" required>
+                    <span class="popup-content__error" id="place_Link-error"></span>
                     <button type="submit" class="popup-content__save">Создать</button>
                 </form>
                 <button class="popup__close popup__close_button_place" type="button"></button>
@@ -73,5 +77,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>
