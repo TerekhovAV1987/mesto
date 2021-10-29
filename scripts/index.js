@@ -73,29 +73,49 @@ const initialCards = [
 
 
 //Для отображения popup. Чтобы не создавать на каждый попап функцию открытия, использую popupName для функции
-function handleOpenedPopup(popupName) {
-  popupName.classList.add('popup_is-opened');
-  document.addEventListener('keydown', function(evt) {
-    if(evt.key === 'Escape') {
-      handleClosedPopup(popupName);
-    }
-  })
-};
+// function handleOpenedPopup(popupName) {
+//   popupName.classList.add('popup_is-opened');
+//   document.addEventListener('keydown', function(evt) {
+//     if(evt.key === 'Escape') {
+//       handleClosedPopup(popupName);
+//     }
+//   })
+// };
 
-//Для скрытия popup
-function handleClosedPopup(popupName) {
-  popupName.classList.remove('popup_is-opened');
-  document.removeEventListener('keydown', function(evt) {
-    if(evt.key === 'Escape') {
-      handleClosedPopup(popupName);
-    }
-  })
-};
+// //Для скрытия popup
+// function handleClosedPopup(popupName) {
+//   popupName.classList.remove('popup_is-opened');
+//   document.removeEventListener('keydown', function(evt) {
+//     if(evt.key === 'Escape') {
+//       handleClosedPopup(popupName);
+//     }
+//   })
+// };
+
+function openPopup(openedPopup) {
+  openedPopup.classList.add('popup_is-opened');
+  document.addEventListener('keydown', closeByEsc);
+}
+
+function closePopup(openedPopup) {
+  openedPopup.classList.remove('popup_is-opened');
+  document.removeEventListener('keydown', closeByEsc);
+}
+
+
+const esc_code = 'Escape';
+//Для закрытия по escape
+function closeByEsc(evt) {
+  if(evt.key === esc_code) {
+    const openedPopup = document.querySelector('.popup_is-opened');
+    closePopup(openedPopup);
+  }
+}
 
 //Для закрытия по overlay
 function closeOverlay(evt) {
   if(evt.target === evt.currentTarget) {
-    handleClosedPopup(evt.target);
+    closePopup(evt.target);
   }
 };
 
@@ -128,8 +148,10 @@ function createCard(item) {
   //увеличение изображения
   elementPicture.addEventListener('click', function (){
     popupImagePreview.src = item.link;
+    popupImagePreview.alt = item.name;
     popupCaption.textContent = item.name;
-    handleOpenedPopup(popupImage);
+    openPopup(popupImage);
+    // handleOpenedPopup(popupImage);
   });
 
   return elementsTemplate;
@@ -150,8 +172,19 @@ function reloadContent() {
     userName.value = profileTitle.textContent;
     userProfile.value = profileSubtitle.textContent;
     //При открытии popup поля заполняются данными из profile
-    handleOpenedPopup(popupProfile);
+    openPopup(popupProfile);
+    // handleOpenedPopup(popupProfile);
 };
+
+function setSubmitButtonState(isFormValid) {
+  if (isFormValid) {
+    saveButton.removeAttribute('disabled');
+    saveButton.classList.remove('popup-content__save_invalid');
+  } else {
+    saveButton.setAttribute('disabled', true);
+    saveButton.classList.add('popup-content__save_invalid');
+  }
+}
 
 editButton.addEventListener('click', reloadContent);
 
@@ -165,36 +198,58 @@ function submitContent(evt) {
     profileTitle.textContent = userNameValue;
     profileSubtitle.textContent = userProfileValue;
     //Добавляем закрытие после отправки
-    handleClosedPopup(popupProfile);
+    closePopup(popupProfile);
+    // handleClosedPopup(popupProfile);
+
 };
 
 //Для создания новой карточки
 
-addButton.addEventListener('click', () => handleOpenedPopup(popupPlace));
+// // addButton.addEventListener('click', () => handleOpenedPopup(popupPlace));
+// addButton.addEventListener('click', () => openPopup(popupPlace));
 
-  saveButton.addEventListener('click', function(event) {
-  event.preventDefault();
-  const card = {}
+//   saveButton.addEventListener('click', function(event) {
+//   event.preventDefault();
+//   const card = {}
+//   card.link = placeLink.value;
+//   card.name = placeName.value;
+//   addCard(card);
+//     closePopup(popupPlace);
+//   // handleClosedPopup(popupPlace);
+
+//   placeName.value = '';
+//   placeLink.value = '';
+// });
+
+function sumbitCards(evt) {
+  evt.preventDefault();
+  const card = {};
   card.link = placeLink.value;
   card.name = placeName.value;
   addCard(card);
-  handleClosedPopup(popupPlace);
+  closePopup(popupPlace);
+  setSubmitButtonState(false);
 
   placeName.value = '';
   placeLink.value = '';
+}
+
+addButton.addEventListener('click', function () {
+  openPopup(popupPlace);
 });
-
-
 
 //Следим за событием 'submit'
 popupProfile.addEventListener('submit', submitContent);
 
+popupPlace.addEventListener('submit', sumbitCards);
+
 //Для закрытия popupProfile по кнопке "Закрыть"
-popupCloseProfile.addEventListener('click', () => handleClosedPopup(popupProfile));
+// popupCloseProfile.addEventListener('click', () => handleClosedPopup(popupProfile));
+popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
 //Для закрытия popupImage по кнопке "Закрыть"
-popupCloseImage.addEventListener('click', () => handleClosedPopup(popupImage));
+popupCloseImage.addEventListener('click', () => closePopup(popupImage));
 //Для закрытия popupPlace по кнопке "Закрыть"
-popupClosePlace.addEventListener('click', () => handleClosedPopup(popupPlace));
+popupClosePlace.addEventListener('click', () => closePopup(popupPlace));
 
 //Для закрытия popupProfile по клику на overlay
 popupProfile.addEventListener('click', closeOverlay);

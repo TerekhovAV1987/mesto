@@ -1,10 +1,11 @@
 .element {
     background-color: white;
-
     border-radius: 10px;
-    max-width: 282px;
+    width: 282px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 
 }
 
