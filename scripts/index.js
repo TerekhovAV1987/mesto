@@ -70,28 +70,6 @@ const initialCards = [
     }
 ]; 
 
-
-
-//Для отображения popup. Чтобы не создавать на каждый попап функцию открытия, использую popupName для функции
-// function handleOpenedPopup(popupName) {
-//   popupName.classList.add('popup_is-opened');
-//   document.addEventListener('keydown', function(evt) {
-//     if(evt.key === 'Escape') {
-//       handleClosedPopup(popupName);
-//     }
-//   })
-// };
-
-// //Для скрытия popup
-// function handleClosedPopup(popupName) {
-//   popupName.classList.remove('popup_is-opened');
-//   document.removeEventListener('keydown', function(evt) {
-//     if(evt.key === 'Escape') {
-//       handleClosedPopup(popupName);
-//     }
-//   })
-// };
-
 function openPopup(openedPopup) {
   openedPopup.classList.add('popup_is-opened');
   document.addEventListener('keydown', closeByEsc);
@@ -204,22 +182,6 @@ function submitContent(evt) {
 };
 
 //Для создания новой карточки
-
-// // addButton.addEventListener('click', () => handleOpenedPopup(popupPlace));
-// addButton.addEventListener('click', () => openPopup(popupPlace));
-
-//   saveButton.addEventListener('click', function(event) {
-//   event.preventDefault();
-//   const card = {}
-//   card.link = placeLink.value;
-//   card.name = placeName.value;
-//   addCard(card);
-//     closePopup(popupPlace);
-//   // handleClosedPopup(popupPlace);
-
-//   placeName.value = '';
-//   placeLink.value = '';
-// });
 
 function sumbitCards(evt) {
   evt.preventDefault();
