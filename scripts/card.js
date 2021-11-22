@@ -14,9 +14,8 @@ export class Card {
     }
 
     _setEventListener(openPopup) {
-        const likeButton = this._element.querySelector('.element__like');
-        const deleteButton = this._element.querySelector('.element__delete');
-
+        // const deleteButton = this._element.querySelector('.element__delete');
+        // const likeButton = this._element.querySelector('.element__like');
         this._elementPicture.addEventListener('click', () => {
             const popup = document.querySelector('.popup_item_create-image');
             const image = popup.querySelector('.popup__preview-image');
@@ -27,20 +26,33 @@ export class Card {
             openPopup(popup);
         });
 
-        likeButton.addEventListener('click', function (evt) {
+        this._elementLike.addEventListener('click', function (evt) {
             evt.target.classList.toggle('element__like_active');
-        });
+        })
 
+        this._elementDelete.addEventListener('click', function (evt) {
+            evt.target.parentNode.remove()
+        })
 
-        deleteButton.addEventListener('click', function(evt) {
-            evt.target.parentNode.remove();
-        });
+        // likeButton.addEventListener('click', function (evt) {
+        //     evt.target.classList.toggle('element__like_active');
+        // });
+
+        // deleteButton.addEventListener('click', function(evt) {
+        //     evt.target.parentNode.remove();
+        // });
     }
+
+    // _likeClick() {
+    //     this._element.querySelector('.element__like').classList.toggle('element__like_active');
+    // };
 
     createElement(openPopup) {
         this._element = this._getTemplate();
         this._elementPicture = this._element.querySelector('.element__picture');
         this._elementName = this._element.querySelector('.element__title');
+        this._elementLike = this._element.querySelector('.element__like');
+        this._elementDelete = this._element.querySelector('.element__delete');
         this._elementName.textContent = this._name;
         this._elementPicture.src = this._link;
         this._elementPicture.alt = this._name;

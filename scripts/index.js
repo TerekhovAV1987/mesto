@@ -116,7 +116,7 @@ function clearInputs(form) {
   const inputs = Array.from(form.querySelectorAll('.popup-content__form'));
   inputs.forEach((input) => {
     input.value = '';
-    input.classList.remove('popup-content__error');
+    input.classList.remove('popup-content__form_invalid');
   });
 }
 
