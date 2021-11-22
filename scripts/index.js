@@ -113,7 +113,7 @@ function activateBtn(form) {
   button.classList.remove('popup-content__save_invalid');
 }
 
-function openPopup(openedPopup) {
+export function openPopup(openedPopup) {
   openedPopup.classList.add('popup_is-opened');
   document.addEventListener('keydown', closeByEsc);
 }

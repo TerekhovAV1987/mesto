@@ -1,8 +1,14 @@
+import { openPopup } from './index.js';
+
 export class Card {
     constructor(name, link, template) {
         this._name = name;
         this._link = link;
         this._template = template;
+
+        this.popup = document.querySelector('.popup_item_create-image');
+        this.image = this.popup.querySelector('.popup__preview-image');
+        this.imageName = this.popup.querySelector('.popup__caption-image');
     }
 
     _getTemplate() {
@@ -13,24 +19,34 @@ export class Card {
         return Element;
     }
 
-    _setEventListener(openPopup) {
+    _addlike(){
+        this._elementLike.classList.toggle('element__like_active');
+    }
+
+    _deleteCard(){
+        this._elementDelete.parentNode.remove();
+    }
+
+    _handleCard(){
+        this.image.src = this._link;
+        this.image.alt = this._name;
+        this.imageName.textContent = this._name;
+
+        openPopup(this.popup);
+    }
+
+    _setEventListener() {
         this._elementPicture.addEventListener('click', () => {
-            const popup = document.querySelector('.popup_item_create-image');
-            const image = popup.querySelector('.popup__preview-image');
-            const imageName = popup.querySelector('.popup__caption-image');
-            image.src = this._link;
-            image.alt = this._name;
-            imageName.textContent = this._name;
-            openPopup(popup);
+            this._handleCard();
         });
 
-        this._elementLike.addEventListener('click', function (evt) {
-            evt.target.classList.toggle('element__like_active');
-        })
+        this._elementLike.addEventListener('click', () => {
+           this._addlike();
+        });
 
-        this._elementDelete.addEventListener('click', function (evt) {
-            evt.target.parentNode.remove()
-        })
+        this._elementDelete.addEventListener('click', () => {
+            this._deleteCard();
+        });
 
     }
 
