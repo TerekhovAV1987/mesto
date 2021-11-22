@@ -31,6 +31,7 @@ export class Card {
             evt.target.classList.toggle('element__like_active');
         });
 
+
         deleteButton.addEventListener('click', function(evt) {
             evt.target.parentNode.remove();
         });

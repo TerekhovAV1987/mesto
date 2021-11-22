@@ -6,7 +6,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    padding: 0;
+    padding: 0 0 10px 0;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
