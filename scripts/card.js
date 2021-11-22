@@ -34,7 +34,6 @@ export class Card {
 
     }
 
-
     createElement(openPopup) {
         this._element = this._getTemplate();
         this._elementPicture = this._element.querySelector('.element__picture');
