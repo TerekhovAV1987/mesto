@@ -5,14 +5,6 @@ import { FormValidator } from "./FormValidator.js";
 const popupProfile = document.querySelector('.popup_item_create-profile');
 //Находим popup plcae
 const popupPlace = document.querySelector('.popup_item_create-place');
-//Находим popup image
-// const popupImage = document.querySelector('.popup_item_create-image');
-// //находим кнопку закрытия popupProfile
-// const popupCloseProfile = document.querySelector('.popup__close_button_profile');
-// //находим кнопку закрытия popupImage
-// const popupCloseImage = document.querySelector('.popup__close_button_image');
-// //находим кнопку закрытия popupPlace
-// const popupClosePlace = document.querySelector('.popup__close_button_place');
 //Находим секцию profile
 const profile = document.querySelector('.profile');
 //Находим в profile кнопку редактирования
@@ -33,9 +25,6 @@ const userProfile = popupProfile.querySelector('.popup-content__form_type_profil
 //Находим поля формы добавления карточки
 const placeName = popupPlace.querySelector('.popup-content__form_place_name');
 const placeLink = popupPlace.querySelector('.popup-content__form_place_link');
-
-// const popupImagePreview = document.querySelector('.popup__preview-image');
-// const popupCaption = document.querySelector('.popup__caption-image');
 
 //находим контейнер elements куда будут добавляться карточки
 const elementsContainer = document.querySelector('.elements');
@@ -94,23 +83,6 @@ function reloadFormEditProfile() {
   userName.value = profileTitle.textContent;
   userProfile.value = profileSubtitle.textContent;
 }
-
-// function addPlaceSubmit() {
-//   const newElement = {};
-//   newElement.name = placeName.value;
-//   newElement.link = placeLink.value;
-//   addCard(newElement);
-//   closePopup(popupPlace);
-// }
-
-// function editProfileSubmit() {
-//   const name = userName.value;
-//   const profile = userProfile.value;
-//   profileTitle.textContent = name;
-//   profileSubtitle.textContent = profile;
-//   closePopup(popupProfile);
-// }
-
 
 function clearInputs(form) { 
   const inputs = Array.from(form.querySelectorAll('.popup-content__form'));
@@ -211,8 +183,6 @@ function submitContent(evt) {
     profileSubtitle.textContent = userProfileValue;
     //Добавляем закрытие после отправки
     closePopup(popupProfile);
-    // handleClosedPopup(popupProfile);
-
 };
 
 //Для создания новой карточки
@@ -224,7 +194,6 @@ function sumbitCards(evt) {
   card.name = placeName.value;
   addCard(card);
   closePopup(popupPlace);
-  // setSubmitButtonState(false);
 
   placeName.value = '';
   placeLink.value = '';

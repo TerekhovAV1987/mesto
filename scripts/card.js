@@ -14,8 +14,6 @@ export class Card {
     }
 
     _setEventListener(openPopup) {
-        // const deleteButton = this._element.querySelector('.element__delete');
-        // const likeButton = this._element.querySelector('.element__like');
         this._elementPicture.addEventListener('click', () => {
             const popup = document.querySelector('.popup_item_create-image');
             const image = popup.querySelector('.popup__preview-image');
@@ -34,18 +32,8 @@ export class Card {
             evt.target.parentNode.remove()
         })
 
-        // likeButton.addEventListener('click', function (evt) {
-        //     evt.target.classList.toggle('element__like_active');
-        // });
-
-        // deleteButton.addEventListener('click', function(evt) {
-        //     evt.target.parentNode.remove();
-        // });
     }
 
-    // _likeClick() {
-    //     this._element.querySelector('.element__like').classList.toggle('element__like_active');
-    // };
 
     createElement(openPopup) {
         this._element = this._getTemplate();
